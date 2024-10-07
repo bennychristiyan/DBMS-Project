@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marks Management System</title>
+    <style>
+        body {
+            background-color: white;
+            color: black;
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace; /* Cursive font */
+        }
+        h1 {
+            font-size: 3em;
+        }
+        form {
+            margin: 20px 0;
+        }
+        input {
+            padding: 10px;
+            margin: 5px;
+            font-size: 1.2em;
+            border-radius: 5px;
+            border: none;
+        }
+        button {
+            padding: 10px;
+            font-size: 1.2em;
+            border-radius: 5px;
+            border: none;
+            background-color: green;
+            color: white;
+            cursor: pointer;
+        }
+        .result {
+            font-size: 2em;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .pass {
+            color: green;
+            font-weight: bold;
+            font-size: 2.5em; /* Enhanced size */
+        }
+        .fail {
+            color: red;
+            font-weight: bold;
+            font-size: 2.5em; /* Enhanced size */
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Marks Management System</h1>
+
+    <form action="/" method="POST">
+        <!-- Add the value attribute to retain the register number after submission -->
+        <input type="text" name="register_no" placeholder="Register Number" value="{{ register_no or '' }}" required>
+        <button type="submit">Check Result</button>
+    </form>
+
+    {% if marks %}
+        <div class="result">
+            <p>Subject 1: {{ marks[0] }}</p>
+            <p>Subject 2: {{ marks[1] }}</p>
+            <p>Subject 3: {{ marks[2] }}</p>
+            <p>Subject 4: {{ marks[3] }}</p>
+            <p>Subject 5: {{ marks[4] }}</p>
+            <h3>Total: {{ total }}</h3>
+            <h3>Status: <span class="{{ 'pass' if status == 'Pass' else 'fail' }}">{{ status }}</span></h3>
+        </div>
+    {% endif %}
+    
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul>
+          {% for message in messages %}
+            <li style="color: red;">{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+</body>
+</html>
