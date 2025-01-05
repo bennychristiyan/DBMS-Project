@@ -1,5 +1,5 @@
 USE student_results;
-
+ 
 CREATE TABLE result (
     register_no INT PRIMARY KEY,
     name VARCHAR(100),

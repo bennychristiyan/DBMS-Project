@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, flash
 import mysql.connector
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key'  # Needed for flash messages
+app.secret_key = 'your_secret_key'  # Needed for flash messages 
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
